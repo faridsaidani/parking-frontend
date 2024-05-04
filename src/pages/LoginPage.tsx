@@ -23,7 +23,7 @@ export default function LoginPage() {
   }, [navigate]);
 
   return (
-    <div className="bg-gray-200 flex justify-center items-center h-screen">
+    <div className="bg-gray-200 flex justify-center items-center h-[90vh]">
       <div className="flex w-[40%] items-end justify-center">
         <img
           src={Car}
@@ -70,6 +70,8 @@ export default function LoginPage() {
                     // if the login is successful, redirect to the home page
                     console.log(res.data);
                     localStorage.setItem("loggedIn", "true");
+                    localStorage.setItem("user", res.data.username);
+                    localStorage.setItem("uid", res.data.uid);
                     navigate("/");
                   })
                   .catch((err) => {

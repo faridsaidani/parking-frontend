@@ -27,7 +27,7 @@ export default function RegisterPage() {
   }, [navigate]);
 
   return (
-    <div className="bg-gray-200 flex items-center h-screen">
+    <div className="bg-gray-200 flex items-center h-[90vh]">
       <div className="flex-1 w-[40%]">
         <img src={Car} alt="car" />
       </div>

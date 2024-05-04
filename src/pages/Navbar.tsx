@@ -4,23 +4,29 @@ import { Button } from "@/components/ui/button";
 export default function Navbar() {
   const navigate = useNavigate();
   const logout = () => {
-    localStorage.removeItem("loggedIn");
+    localStorage.clear();
     window.location.reload();
   };
   const loggedIn = localStorage.getItem("loggedIn");
+  const username = localStorage.getItem("user");
+  //   const username = JSON.parse(localStorage.getItem("user") || "").username;
   return (
-    <div className="bg-gray-200 p-4 flex justify-between items-center">
-      <h1>Smart Parking</h1>
+    <div className="bg-gray-200 h-[10vh] p-4 flex justify-between items-center">
+      <h1>
+        <a href="/home">Smart Parking</a>
+      </h1>
       <div>
-        <Button onClick={() => navigate("/register")}>Register</Button>
-        <Button onClick={() => navigate("/login")}>Login</Button>
-        <Button
-          onClick={() => {
-            if (loggedIn) logout();
-          }}
-        >
-          Logout
-        </Button>
+        {loggedIn ? (
+          <div className="flex items-center">
+            <p>{username}</p>
+            <Button onClick={() => logout()}>Logout</Button>
+          </div>
+        ) : (
+          <div>
+            <Button onClick={() => navigate("/register")}>Register</Button>
+            <Button onClick={() => navigate("/login")}>Login</Button>
+          </div>
+        )}
       </div>
     </div>
   );
