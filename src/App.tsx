@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import Layout from "./pages/Layout";
+import ProfilePage from "./pages/ProfilePage";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
         </Route>
+        <Route path="profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

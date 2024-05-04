@@ -13,12 +13,12 @@ export default function Navbar() {
   return (
     <div className="bg-gray-200 h-[10vh] p-4 flex justify-between items-center">
       <h1>
-        <a href="/home">Smart Parking</a>
+        <a href="/">Smart Parking</a>
       </h1>
       <div>
         {loggedIn ? (
           <div className="flex items-center">
-            <p>{username}</p>
+            <a href="/profile">{username}</a>
             <Button onClick={() => logout()}>Logout</Button>
           </div>
         ) : (
