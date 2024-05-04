@@ -22,13 +22,26 @@ export default function Cars() {
   }, []);
   return (
     <div>
-      <h1>Cars</h1>
-      <div>
+      <h1 className="text-2xl font-bold p-2">Cars</h1>
+      <div className="flex">
         {(cars as any[] | undefined)?.map((car: any) => (
-          <div key={car.id} className="bg-gray-300 rounded-[5px] w-fit">
-            <h2>{car.marque}</h2>
-            <h2>{car.modele}</h2>
-            <h2>{car.annee}</h2>
+          <div key={car.id} className="bg-gray-100 rounded-[5px] w-fit flex">
+            <div className="w-[20%] flex flex-col items-center justify-center">
+              <h2>Maker : {car.marque}</h2>
+              <h2>Model : {car.modele}</h2>
+              <h2>Year : {car.annee}</h2>
+              <h2>Color : {car.couleur}</h2>
+              <h2>{car.numero_immatriculation}</h2>
+            </div>
+            <div className="productImages grid grid-cols-2 grid-rows-2 gap-[10px] w-[570px]">
+              {car.photos.map((photo: any) => (
+                <img
+                  className="w-[270px] h-[270px] rounded-[10px] min-w-[270px]"
+                  style={{ objectFit: "cover", maxWidth: "100%" }}
+                  src={photo}
+                />
+              ))}
+            </div>
           </div>
         ))}
       </div>

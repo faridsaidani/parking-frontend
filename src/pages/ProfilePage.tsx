@@ -52,7 +52,7 @@ export default function ProfilePage() {
     checkLoggedIn();
   }, [navigate]);
   return (
-    <div className="grid grid-cols-2">
+    <div className="flex">
       <div className="flex flex-col w-64 h-screen bg-gray-800 text-white">
         <div className="flex items-center justify-center h-16 border-b border-gray-700">
           <h1 className="text-2xl">Profile</h1>
@@ -106,7 +106,7 @@ export default function ProfilePage() {
           <p>Welcome, {username}!</p>
         </div>
       </div>
-      <div className="content">
+      <div className="content w-[100%]">
         {profile && <Profile />}
         {cars && <Cars />}
         {invoices && <Invoices />}

@@ -11,7 +11,7 @@ export default function Navbar() {
   const username = localStorage.getItem("user");
   //   const username = JSON.parse(localStorage.getItem("user") || "").username;
   return (
-    <div className="bg-gray-200 h-[10vh] p-4 flex justify-between items-center">
+    <div className="bg-blue-300 h-[10vh] p-4 flex justify-between items-center">
       <h1>
         <a href="/">Smart Parking</a>
       </h1>
