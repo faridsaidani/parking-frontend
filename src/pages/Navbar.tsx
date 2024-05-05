@@ -23,8 +23,18 @@ export default function Navbar() {
           </div>
         ) : (
           <div>
-            <Button onClick={() => navigate("/register")}>Register</Button>
-            <Button onClick={() => navigate("/login")}>Login</Button>
+            <Button
+              onClick={() => navigate("/register")}
+              className="bg-white rounded-[5px] hover:bg-gray-400 mr-2"
+            >
+              Register
+            </Button>
+            <Button
+              onClick={() => navigate("/login")}
+              className="bg-white rounded-[5px] hover:bg-gray-400"
+            >
+              Login
+            </Button>
           </div>
         )}
       </div>
