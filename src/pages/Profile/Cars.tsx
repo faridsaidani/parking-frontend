@@ -43,8 +43,9 @@ export default function Cars() {
               </Button>
             </div>
             <div className="productImages grid grid-cols-2 grid-rows-2 gap-[10px] w-[570px]">
-              {car.photos.map((photo: any) => (
+              {car.photos.map((photo: any, index: number) => (
                 <img
+                  key={index}
                   className="w-[270px] h-[270px] rounded-[10px] min-w-[270px]"
                   style={{ objectFit: "cover", maxWidth: "100%" }}
                   src={photo}

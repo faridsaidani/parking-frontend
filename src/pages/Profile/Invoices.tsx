@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import { DialogFacture } from "@/components/DialogDemo";
 
 export default function Invoices() {
   const [cars, setCars] = useState();
@@ -44,9 +45,11 @@ export default function Invoices() {
                 Paid
               </Button>
             ) : (
-              <Button className="bg-red-600 text-white rounded-[5px] hover:bg-red-700">
-                Not Paid
-              </Button>
+              <DialogFacture
+                userID={localStorage.getItem("uid") || ""}
+                invoiceID={car.id}
+                invoiceSum={car.montant_a_regler}
+              />
             )}
           </div>
         ))}

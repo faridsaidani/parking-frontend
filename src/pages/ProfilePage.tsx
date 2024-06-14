@@ -4,19 +4,29 @@ import Profile from "./Profile/Profile";
 import Cars from "./Profile/Cars";
 import Invoices from "./Profile/Invoices";
 import Settings from "./Profile/Settings";
+import Users from "./Profile/Users";
 
 export default function ProfilePage() {
   const [profile, setprofile] = useState(true);
   const [cars, setcars] = useState(false);
   const [invoices, setinvoices] = useState(false);
   const [settings, setsettings] = useState(false);
-
+  const [users, setusers] = useState(false);
+  // const [isAdmin, setisAdmin] = useState(false);
+  let isAdmin = false;
+  const uid = localStorage.getItem("uid");
+  console.log("uid = ", uid);
+  if (uid == "1") {
+    console.log("true");
+    isAdmin = true;
+  }
   const username = localStorage.getItem("user");
   const handleInvoices = () => {
     setinvoices(true);
     setcars(false);
     setsettings(false);
     setprofile(false);
+    setusers(false);
     console.log(profile, cars, invoices, settings);
   };
   const handleCars = () => {
@@ -24,6 +34,7 @@ export default function ProfilePage() {
     setcars(true);
     setsettings(false);
     setprofile(false);
+    setusers(false);
     console.log(profile, cars, invoices, settings);
   };
   const handleSettings = () => {
@@ -31,6 +42,8 @@ export default function ProfilePage() {
     setcars(false);
     setsettings(true);
     setprofile(false);
+    setusers(false);
+
     console.log(profile, cars, invoices, settings);
   };
   const handleProfile = () => {
@@ -38,6 +51,17 @@ export default function ProfilePage() {
     setcars(false);
     setsettings(false);
     setprofile(true);
+    setusers(false);
+
+    console.log(profile, cars, invoices, settings, users);
+  };
+  const handleUsers = () => {
+    setinvoices(false);
+    setcars(false);
+    setsettings(false);
+    setprofile(false);
+    setusers(true);
+
     console.log(profile, cars, invoices, settings);
   };
 
@@ -101,6 +125,20 @@ export default function ProfilePage() {
           >
             Settings
           </p>
+          {isAdmin ? (
+            <p
+              onClick={() => handleUsers()}
+              className={
+                users
+                  ? "cursor-pointer py-[10px] px-[5px] rounded-[5px] bg-white text-gray-800"
+                  : "cursor-pointer py-[10px] px-[5px] rounded-[5px] hover:bg-white hover:text-gray-800"
+              }
+            >
+              Users
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className="flex items-center justify-center h-16 border-t border-gray-700">
           <p>Welcome, {username}!</p>
@@ -111,6 +149,7 @@ export default function ProfilePage() {
         {cars && <Cars />}
         {invoices && <Invoices />}
         {settings && <Settings />}
+        {users && <Users />}
       </div>
     </div>
   );
