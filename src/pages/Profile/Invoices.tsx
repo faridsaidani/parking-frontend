@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
-import { DialogFacture } from "@/components/DialogDemo";
+import { DialogFacture } from "@/components/DialogFacture";
 
 export default function Invoices() {
   const [cars, setCars] = useState();
