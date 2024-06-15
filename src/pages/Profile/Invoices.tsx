@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { DialogFacture } from "@/components/DialogFacture";
 
 export default function Invoices() {
-  const [cars, setCars] = useState();
+  const [factures, setFactures] = useState();
   const uid = localStorage.getItem("uid");
   useEffect(() => {
     const fetchData = async () => {
@@ -14,7 +14,7 @@ export default function Invoices() {
           `http://localhost:5000/users/${uid}/invoices`
         );
         console.log(response.data);
-        setCars(response.data);
+        setFactures(response.data);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -26,29 +26,37 @@ export default function Invoices() {
     <div>
       <h1 className="text-2xl font-bold p-2">Invoices</h1>
       <div>
-        {(cars as any[] | undefined)?.map((car: any) => (
+        {(factures as any[] | undefined)?.map((facture: any) => (
           <div
-            key={car.id}
-            className="bg-gray-100 rounded-[5px] w-[150px] p-2 m-2"
+            key={facture.id}
+            className="bg-gray-100 rounded-[5px] w-fit p-2 m-2"
           >
             <h2>
-              <strong>Car ID :</strong> {car.id}
+              <strong>Invoice ID :</strong> {facture.id}
             </h2>
             <h2>
-              <strong>In/out ID :</strong> {car.entree_sortie}
+              <strong>Voiture :</strong> {facture.numero_immatriculation}
             </h2>
             <h2>
-              <strong>Amount :</strong> {car.montant_a_regler}
+              <strong>Heure entree :</strong> {facture.heure_entree}
             </h2>
-            {car.regle ? (
+            <h2>
+              <strong>Heure sortie :</strong> {facture.heure_sortie}
+            </h2>
+            {/*
+             */}
+            <h2>
+              <strong>Montant :</strong> {Math.round(facture.total_cost)} DA
+            </h2>
+            {facture.regle ? (
               <Button className="bg-green-600 text-white rounded-[5px] hover:bg-green-700">
                 Paid
               </Button>
             ) : (
               <DialogFacture
                 userID={localStorage.getItem("uid") || ""}
-                invoiceID={car.id}
-                invoiceSum={car.montant_a_regler}
+                invoiceID={facture.id}
+                invoiceSum={facture.total_cost}
               />
             )}
           </div>

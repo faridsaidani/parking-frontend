@@ -77,7 +77,7 @@ export default function ProfilePage() {
   }, [navigate]);
   return (
     <div className="flex">
-      <div className="flex flex-col w-64 h-screen bg-gray-800 text-white">
+      <div className="flex flex-col w-64 h-screen bg-gray-800 text-white fixed">
         <div className="flex items-center justify-center h-16 border-b border-gray-700">
           <h1 className="text-2xl">Profile</h1>
         </div>
@@ -144,7 +144,7 @@ export default function ProfilePage() {
           <p>Welcome, {username}!</p>
         </div>
       </div>
-      <div className="content w-[100%]">
+      <div className="content w-[100%] ml-64">
         {profile && <Profile />}
         {cars && <Cars />}
         {invoices && <Invoices />}
